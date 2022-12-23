@@ -1,28 +1,38 @@
 <!DOCTYPE HTML>
  <html>
   <head>
-  <title> Mause Proxy </title>
+  <title> Mause Web Display </title>
  <link rel="stylesheet" href="ProxyCSS.css">
 <body>
   
-  <h1> Mause Proxy </h1>
+  <h1> Mause Web Display </h1>
   <h2> Powered By: <img src="https://yt3.ggpht.com/G-H4qbBGZuiPA2eFlkQyS3dA1CM-y-nfBOxomU1aLSW5EiJ7E31tJwBZWiiZadJ_MQvSqJwbHQ=s900-c-k-c0x00ffffff-no-rj" alt="Mause Logo"/> Mause Technology </h2>
     
-  <form id="proxy-form">
-    <label for="proxy-url">Enter URL:</label>
-    <input type="text" id="proxy-url" name="proxy-url" placeholder="http://www.example.com">
+
+  <h1>Enter a website to display:</h1>
+  <form>
+    <input type="text" name="url" placeholder="Enter website URL">
     <button type="submit">Go</button>
   </form>
-  <div id="proxy-content"></div>
-  <script>
+  <hr>
+  <iframe src="" frameborder="0"></iframe>
+ 
+ <script>
+  function displayWebsite(event) {
+    // Prevent form submission
+    event.preventDefault();
 
-    var form = document.getElementById('proxy-form');
-    var iframe = document.getElementById('proxy-iframe');
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-      var url = document.getElementById('proxy-url').value;
-      iframe.src = url;
-    });
-  </script>
+    // Get the website URL from the form input
+    const url = document.querySelector('[name=url]').value;
+
+    // Update the src attribute of the iframe
+    document.querySelector('iframe').src = url;
+  }
+
+  // Add a submit event listener to the form
+  const form = document.querySelector('form');
+  form.addEventListener('submit', displayWebsite);
+</script>
+
 </body>
 </html>
