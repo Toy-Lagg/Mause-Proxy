@@ -19,19 +19,24 @@
  
  <script>
   function displayWebsite(event) {
-    // Prevent form submission
-    event.preventDefault();
+  // Prevent form submission
+  event.preventDefault();
 
-    // Get the website URL from the form input
-    const url = document.querySelector('[name=url]').value;
+  // Get a reference to the input element
+  const input = document.querySelector('#url-input');
 
-    // Update the src attribute of the iframe
-    document.querySelector('iframe').src = url;
+  // Check if the https:// prefix is present
+  if (!input.value.startsWith('https://')) {
+    // If not, add the prefix
+    input.value = 'https://' + input.value;
   }
 
-  // Add a submit event listener to the form
-  const form = document.querySelector('form');
-  form.addEventListener('submit', displayWebsite);
+  // Get the website URL from the form input
+  const url = input.value;
+
+  // Update the src attribute of the iframe
+  document.querySelector('iframe').src = url;
+}
 </script>
 
 </body>
